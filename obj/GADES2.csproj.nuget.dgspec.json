@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122_POE\\GADES2.csproj": {}
+    "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122-POE\\GADE6122-POE\\GADES2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122_POE\\GADES2.csproj": {
+    "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122-POE\\GADE6122-POE\\GADES2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122_POE\\GADES2.csproj",
+        "projectUniqueName": "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122-POE\\GADE6122-POE\\GADES2.csproj",
         "projectName": "GADES2",
-        "projectPath": "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122_POE\\GADES2.csproj",
+        "projectPath": "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122-POE\\GADE6122-POE\\GADES2.csproj",
         "packagesPath": "C:\\Users\\Devan Conradie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122_POE\\obj\\",
+        "outputPath": "C:\\Users\\Devan Conradie\\Documents\\GitHub\\GADE6122-POE\\GADE6122-POE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Devan Conradie\\AppData\\Roaming\\NuGet\\NuGet.Config",
