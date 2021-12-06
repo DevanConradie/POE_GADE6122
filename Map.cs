@@ -88,15 +88,58 @@ namespace GADES2
             UpdateVision();
         }
 
-       /* public bool Movehero(Character.Movement direction)
+        /* public bool Movehero(Character.Movement direction)
+         {
+             if (Map.pla)
+             {
+
+             }
+             return true;
+         }*/
+        private void PopulateMap()
         {
-            if (Map.pla)
+            for (int y = 0; y <= height; y++)
             {
-
+                for (int x = 0; x < width; x++)
+                {
+                    if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
+                    {
+                        map[x, y] = new Obstacle(x, y);
+                    }
+                    else
+                    {
+                        map[x, y] = new EmptyTile(x, y);
+                    }
+                }
             }
-            return true;
-        }*/
+        }
 
+        public string NewMap()
+        {
+            map = new Tile[width, height];
+            PopulateMap();
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                map[enemies[i].X, enemies[i].Y] = enemies[i];
+            }
+            if (Player != null)
+            {
+                map[Player.X, Player.Y] = player;
+            }
+            map.ToString();
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    map[items[i].X, items[i].Y] = items[i];
+                }
+            }
+            return "";
+        }
         public void UpdateMap()
         {
 
@@ -119,6 +162,22 @@ namespace GADES2
 
                     map[character.X, character.Y] = character;
                 }
+            }
+        }
+
+        public Tile GetTileAt(int x, int y)
+        {
+            if (x < 0 || x >= width || y < 0 || y >= height)
+            {
+                return null;
+            }
+            return map[x, y];
+        }
+        public void SetEmptyTile(int x, int y)
+        {
+            if (x > 1 || x < width - 1 || y > 1 || y < height - 1)
+            {
+
             }
         }
         public Item GetItemAtPosition(int x, int y)
@@ -160,15 +219,12 @@ namespace GADES2
                             break;
                         case Tile.TILETYPE.enemy:
                             tile = new Goblin(rand1, rand2);
-                          /*  int RandomEnemyType = random.Next(0, 2);
-                            if (RandomEnemyType ==0)
-                            {
-                                map[x, y] = new Goblin(x, y);
-                            }
-                            else
-                            {
-                                map[x, y] = new Mage(x, y);
-                            }*/
+                            break;
+                        case Tile.TILETYPE.mage:
+                            tile = new Mage(rand1, rand2);
+                            break;
+                        case Tile.TILETYPE.leader:
+                            tile = new Leader(rand1, rand2);
                             break;
                     }
 
@@ -180,6 +236,8 @@ namespace GADES2
 
             return tile;
         }
+
+
         public override string ToString()
         {
             string value = "";
@@ -203,7 +261,7 @@ namespace GADES2
 
                     }
 
-                  /*  if (map[x,y] is Goblin)
+                    if (map[x,y] is Goblin)
                     {
                         enemy = (Enemy)map[x, y];
                         if (enemy.IsDead(enemy)==true)
@@ -239,13 +297,13 @@ namespace GADES2
                         {
                             value += 'L';
                         }
-                    }*/
+                    }
                     else if (map[x, y] is Gold)
                     {
                        
                             value += '$';
                     }
-                   /* else if (map[x, y] is MeleeWeapon)
+                    else if (map[x, y] is MeleeWeapon)
                     {
 
                         value += '>';
@@ -254,7 +312,7 @@ namespace GADES2
                     {
 
                         value += ')';
-                    }*/
+                    }
 
 
                 }
