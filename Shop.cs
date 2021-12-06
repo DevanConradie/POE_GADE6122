@@ -23,23 +23,24 @@ namespace GADES2
         }
         public Weapon RandomWeapon()
         {
-            int choice = rng.Next(1, 5);
+            int choice = rng.Next(1, 4);
             if (choice == 1)
             {
-                return RangedWeapon.Types.LONGBOW;
+                return new RangedWeapon(0,0,0,0,"LongBow",'D',0,0,RangedWeapon.Types.LONGBOW);
             }
             else if (choice == 2)
             {
-                return RangedWeapon.Types.RIFLE;
+                return new RangedWeapon(0, 0, 0, 0, "Rifle", '~', 0, 0, RangedWeapon.Types.RIFLE);
             }
             else if (choice == 3)
             {
-                return MeleeWeapon.Types.DAGGER;
+                return new MeleeWeapon(0,0,0,"Dagger",' ',0,0,MeleeWeapon.Types.DAGGER);
             }
-            else if (choice == 4)
+            else
             {
-                return MeleeWeapon.Types.LONGSWORD;
+                return new MeleeWeapon(0, 0, 0, "Dagger", ' ', 0, 0, MeleeWeapon.Types.LONGSWORD);
             }
+            
         }
         public bool CanBuy(int Cost)
         {
@@ -51,12 +52,12 @@ namespace GADES2
         }
         public void Buy(int Cost)
         {
-            hero.GoldAmount -= Cost;
+            hero.UpdateGold(-Cost);
             return;
         }
         public string DisplayWeapon(int Cost)
         {
-            return "Buy " + WeaponType + Cost.ToString();
+            return "Buy " + Weapon[0].weaponType + Cost.ToString();
         }
     }
 }

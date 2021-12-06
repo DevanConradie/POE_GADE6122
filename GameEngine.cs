@@ -216,8 +216,6 @@ namespace GADES2
                     return 'H';
                 case Tile.TILETYPE.goblin:
                     return 'G';
-                case Tile.TILETYPE.mage:
-                    return 'M';
                 case Tile.TILETYPE.obstacle:
                     return 'X';
                 case Tile.TILETYPE.emptyTile:

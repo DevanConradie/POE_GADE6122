@@ -21,7 +21,7 @@ namespace GADES2
         }
         public override Movement ReturnMove(Movement mOVEMENT = Movement.NO_MOVEMENT)
         {
-            int moveDir;
+            int moveDir =0;
             int tries = 10;
 
             do
