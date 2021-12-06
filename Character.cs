@@ -13,7 +13,7 @@ namespace GADES2
         public int GoldAmount
         {
            get { return goldAmount; }
-            
+           set { goldAmount = value; }
         }
         public int UpdateGold(int amount)
         {
