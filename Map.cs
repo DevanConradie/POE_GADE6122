@@ -198,44 +198,115 @@ namespace GADES2
             return null;
 
         }
-  //update map
+        //update map
         private Tile Create(Tile.TILETYPE tileType)
         {
-            Tile tile = null;
+            int x;
+            int y;
+            Tile newTile = null;
 
-            while (tile == null)  //1 == 1)
+            do
             {
-                int rand1 = random.Next(1, width);
-                int rand2 = random.Next(1, height);
+                x = random.Next(1, width);
+                y = random.Next(1, height);
+            } while (!(map[x, y] is EmptyTile));
 
-                if (map[rand1, rand2] == null)
+            if (tileType == Tile.TILETYPE.enemy)
+            {
+                int enemytype = random.Next(0, 2);
+                if (enemytype == 0)
                 {
-                    string temp =tileType.ToString();
-                    System.Diagnostics.Debug.WriteLine("Found"+temp);
-                    switch (tileType)
-                    {
-                        case Tile.TILETYPE.hero:
-                            tile = new Hero(rand1, rand2, 100);
-                            break;
-                        case Tile.TILETYPE.enemy:
-                            tile = new Goblin(rand1, rand2);
-                            break;
-                        case Tile.TILETYPE.mage:
-                            tile = new Mage(rand1, rand2);
-                            break;
-                        case Tile.TILETYPE.leader:
-                            tile = new Leader(rand1, rand2);
-                            break;
-                    }
-
-                    map[rand1, rand2] = tile;
-
-                    return tile;
+                    newTile = new Goblin(x, y);
+                }
+                else
+                {
+                    newTile = new Mage(x, y);
+                }
+            }
+            else if (tileType == Tile.TILETYPE.leader)
+            {
+                newTile = new Leader(x, y);
+                Leader boss = (Leader)newTile;
+                boss.LeaderTarget = hero ;
+                newTile = boss;
+            }
+            else if (tileType == Tile.TILETYPE.hero)
+            {
+                newTile = new Hero(x, y, 20);
+            }
+            else if (tileType == Tile.TILETYPE.gold)
+            {
+                newTile = new Gold(x, y);
+            }
+            else if (tileType == Tile.TILETYPE.weapon)
+            {
+                int typeWeapon = random.Next(0, 4);
+                switch (typeWeapon)
+                {
+                    case 1:
+                        newTile = new MeleeWeapon(Types.longsword, x, y);
+                        break;
+                    case 2:
+                        newTile = new MeleeWeapon(Types.dagger, x, y);
+                        break;
+                    case 3:
+                        newTile = new RangedWeapon(RangedTypes.LONGBOW, x, y);
+                        break;
+                    case 4:
+                        newTile = new RangedWeapon(RangedTypes.RIFLE, x, y);
+                        break;
                 }
             }
 
-            return tile;
+            System.Diagnostics.Debug.WriteLine("MAP WIDTH:" + width + "/nHeight:" + height);
+
+            if (!(newTile is Hero))
+            {
+                map[x, y] = newTile;
+            }
+            return newTile;
         }
+
+        /* private Tile Create(Tile.TILETYPE tileType)
+         {
+             Tile tile = null;
+
+             while (tile == null)  //1 == 1)
+             {
+                 int rand1 = random.Next(1, width);
+                 int rand2 = random.Next(1, height);
+
+                 if (map[rand1, rand2] == null)
+                 {
+                     string temp =tileType.ToString();
+                     System.Diagnostics.Debug.WriteLine("Found"+temp);
+                     switch (tileType)
+                     {
+                         case Tile.TILETYPE.hero:
+                             tile = new Hero(rand1, rand2, 100);
+                             break;
+                         case Tile.TILETYPE.enemy:
+                             tile = new Goblin(rand1, rand2);
+                             break;
+                         case Tile.TILETYPE.mage:
+                             tile = new Mage(rand1, rand2);
+                             break;
+                         case Tile.TILETYPE.leader:
+                             tile = new Leader(rand1, rand2);
+                             break;
+                     }
+
+                     map[rand1, rand2] = tile;
+
+                     return tile;
+                 }
+             }
+
+             return tile;
+         }
+
+
+         */
 
 
         public override string ToString()

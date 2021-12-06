@@ -38,7 +38,7 @@ namespace GADES2
             }
             else
             {
-                return new MeleeWeapon(0, 0, 0, "Dagger", ' ', 0, 0, MeleeWeapon.Types.LONGSWORD);
+                return new MeleeWeapon(0, 0, 0, "Sword", ' ', 0, 0, MeleeWeapon.Types.LONGSWORD);
             }
             
         }
