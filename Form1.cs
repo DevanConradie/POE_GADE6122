@@ -45,24 +45,33 @@ namespace GADES2
         private void btnUp_Click(object sender, EventArgs e)
         {
             newInstance.MovePlayer(Character.Movement.UP);
+            {
+                newInstance.BuildMap();
+            }
         }
 
         private void btnRight_Click(object sender, EventArgs e)
         {
             newInstance.MovePlayer(Character.Movement.RIGHT);
+            {
+                newInstance.BuildMap();
+            }
         }
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
             newInstance.MovePlayer(Character.Movement.LEFT);
-            
+            {
+                newInstance.BuildMap();
+            }
         }
 
         private void btnDown_Click(object sender, EventArgs e)
         {
             newInstance.MovePlayer(Character.Movement.DOWN);
-            
-           
+            {
+                newInstance.BuildMap();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
