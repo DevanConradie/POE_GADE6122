@@ -8,31 +8,35 @@ namespace GADES2
 {
     class MeleeWeapon : Weapon
     {
-        public enum Types
+        Types MeleeWeaponType;
+        public MeleeWeapon(int damage, int durability, int cost, string weaponType,char symbol, int x, int y, Types MeleeWeaponType) : base(damage, 1, durability, cost, weaponType, symbol, x, y)
         {
-            LONGSWORD,DAGGER
-        }
-        public override int Range 
-        { 
-            get => base.Range; 
-            set => base.Range = 1; 
-        }
-        public MeleeWeapon(int x, int y, Types type) : base(0,0,0,0,"") //**
-        {
-            if (type == Types.DAGGER)
+            this.MeleeWeaponType = MeleeWeaponType;
+            if (MeleeWeaponType == Types.DAGGER)
             {
                 this.damage = 3;
-                this.range = 1;
                 this.durability = 10;
                 this.cost = 3;
             }
-            else if (type == Types.LONGSWORD)
-            {
+            else
+            { 
                 this.damage = 4;
-                this.range = 1;
                 this.durability = 6;
                 this.cost = 5;
             }
+        }
+
+        override public int Range
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
+        public enum Types
+        {
+            LONGSWORD,DAGGER
         }
     }
 }

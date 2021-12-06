@@ -10,9 +10,8 @@ namespace GADES2
    abstract class Weapon : Item 
     {
 
-      
-
-        protected Weapon(int damage,  int range, int durability, int cost,  string weaponType) : base(0,0)
+        char Symbol;
+        protected Weapon(int damage, int range, int durability, int cost,  string weaponType, char symbol, int x, int y) : base(0,0)
         {
             this.range = range;
             this.durability = durability;
@@ -20,6 +19,9 @@ namespace GADES2
             this.cost = cost;
             Cost = cost;
             this.weaponType = weaponType;
+            this.x = x;
+            this.y = y;
+            this.Symbol = symbol;
         }
 
         protected int damage;
@@ -30,11 +32,13 @@ namespace GADES2
         }
 
         protected int range;
-        //2.1 virtual accessor
-        public virtual int Range
+
+        virtual public int Range
         {
-            get { return range; }
-            set { range = value; }
+            get
+            {
+                return Range;
+            }
         }
 
         protected int durability;
@@ -52,11 +56,10 @@ namespace GADES2
         }
 
         protected string weaponType;
-        //2.1 Weapon type accessor
-        public string WeaponType
+        public override string ToString()
         {
-            get { return weaponType; }
-            set { weaponType = value; }
+            string str = Symbol.ToString();
+            return str;
         }
     }
 }

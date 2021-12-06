@@ -8,30 +8,38 @@ namespace GADES2
 {
     class RangedWeapon : Weapon
     {
-        public enum Types
+        Types RangedWeaponType;
+        public RangedWeapon(int damage, int range, int durability, int cost, string weaponType, char symbol, int x, int y, Types RangedWeaponType) : base(damage, range, durability, cost, weaponType, symbol, x, y)
         {
-            LONGBOW,RIFLE
-        }
-        public override int Range { get => base.Range; set => base.Range = value; }
-        public RangedWeapon(int x, int y, Types type) : base(0, 0, 0, 0, "") //**
-        {
-            if (type == Types.LONGBOW)
+            this.RangedWeaponType = RangedWeaponType;
+            if (RangedWeaponType == Types.RIFLE)
             {
-                weaponType = "Longbow";
-                weaponType.ToString();
-                this.damage = 4;
-                this.range = 2;
-                this.durability = 4;
-                this.cost = 6; 
-            }
-            else if (type == Types.RIFLE)
-            {
-                weaponType = "Rifle";
                 this.damage = 5;
-                this.range = 3;
                 this.durability = 3;
                 this.cost = 7;
+                this.range = 3;
             }
+            else
+            {
+                this.damage = 4;
+                this.durability = 4;
+                this.cost = 6;
+                this.range = 2;
+            }
+            this.Durability = durability;
+        }
+
+        override public int Range
+        {
+            get
+            {
+                return range;
+            }
+        }
+
+        public enum Types
+        {
+            RIFLE, LONGBOW
         }
     }
 }

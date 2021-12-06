@@ -13,7 +13,7 @@ namespace GADES2
         public int GoldAmount
         {
            get { return goldAmount; }
-           set { goldAmount = value; }
+            
         }
         public int UpdateGold(int amount)
         {
@@ -44,6 +44,7 @@ namespace GADES2
             NO_MOVEMENT,UP,DOWN,LEFT,RIGHT
         }
         //Constructor
+        //2.3 task 1
         public Character(int ax, int ay, TILETYPE aTileType) : base(ax, ay, aTileType)
         {
 

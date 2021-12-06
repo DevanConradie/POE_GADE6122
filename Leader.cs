@@ -27,8 +27,8 @@ namespace GADES2
             do
             {
                 if (LeaderTarget.X > x)
-                { 
-                    moveDir = -1; 
+                {
+                    moveDir = -1;
                 }
                 else if (LeaderTarget.X < x)
                 {
@@ -42,7 +42,7 @@ namespace GADES2
                 {
                     moveDir = 1;
                 }
-                
+
                 tries--;
                 if (tries == 0)
                 {

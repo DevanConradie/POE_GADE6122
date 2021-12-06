@@ -39,7 +39,7 @@ namespace GADES2
         {
             hero, enemy, obstacle,emptyTile,
             goblin, mage, weapon,
-            gold, item
+            gold, item,leader,dagger, longsword,bow
         }
 
        
