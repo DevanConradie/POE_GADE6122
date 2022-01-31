@@ -269,7 +269,7 @@ namespace GADES2
             return newTile;
         }
 
-        /* private Tile Create(Tile.TILETYPE tileType)
+        private Tile CreateEnemies(Tile.TILETYPE tileType)
          {
              Tile tile = null;
 
@@ -308,7 +308,6 @@ namespace GADES2
          }
 
 
-         */
 
 
         public override string ToString()

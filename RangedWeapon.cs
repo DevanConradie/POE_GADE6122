@@ -35,7 +35,7 @@ namespace GADES2
         {
             get
             {
-                return range;
+                return base.range;
             }
         }
 

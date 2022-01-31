@@ -8,11 +8,11 @@ namespace GADES2
 {
     class Shop
     {
-        private Weapon[] weaponArray;
-        Random rng;
-        Hero hero;
+        private Weapon[] weaponArray = new Weapon[3];
+        Random rng = new Random();
+        Hero characterPurchasing;
 
-        public Shop(Hero hero)
+        public Shop(Hero characterPurchasing)
         {
             rng = new Random();
             weaponArray = new Weapon[3];
@@ -26,25 +26,25 @@ namespace GADES2
             int choice = rng.Next(1, 4);
             if (choice == 1)
             {
-                return new RangedWeapon(0,0,0,0,"LongBow",'D',0,0,RangedWeapon.Types.LONGBOW);
+                return new RangedWeapon(0,0,0,0,"Longbow",'B',0,0,RangedWeapon.Types.LONGBOW);
             }
             else if (choice == 2)
             {
-                return new RangedWeapon(0, 0, 0, 0, "Rifle", '~', 0, 0, RangedWeapon.Types.RIFLE);
+                return new RangedWeapon(0, 0, 0, 0, "Rifle", 'R', 0, 0, RangedWeapon.Types.RIFLE);
             }
             else if (choice == 3)
             {
-                return new MeleeWeapon(0,0,0,"Dagger",' ',0,0,MeleeWeapon.Types.DAGGER);
+                return new MeleeWeapon(0,0,0,"Dagger",'D',0,0,MeleeWeapon.Types.DAGGER);
             }
             else
             {
-                return new MeleeWeapon(0, 0, 0, "Sword", ' ', 0, 0, MeleeWeapon.Types.LONGSWORD);
+                return new MeleeWeapon(0, 0, 0, "Longsword", 'S', 0, 0, MeleeWeapon.Types.LONGSWORD);
             }
             
         }
         public bool CanBuy(int Cost)
         {
-            if (hero.GoldAmount >= Cost)
+            if (characterPurchasing.GoldAmount >= Cost)
             {
                 return true;
             }
@@ -52,12 +52,15 @@ namespace GADES2
         }
         public void Buy(int Cost)
         {
-            hero.UpdateGold(-Cost);
+            characterPurchasing.UpdateGold(-Cost);
             return;
         }
         public string DisplayWeapon(int Cost)
         {
-            return "Buy " + Cost.ToString();
+            return
+                "Buy " + weaponArray[0] + Cost.ToString() +
+                " Buy " + weaponArray[1] + Cost.ToString() +
+                " Buy " + weaponArray[2] + Cost.ToString();
         }
     }
 }

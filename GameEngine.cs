@@ -224,6 +224,10 @@ namespace GADES2
                     return '_';
             }
         }
+        public Shop IngameShop()
+        {
+            return null;
+        }
 
         public void Save()
         {
