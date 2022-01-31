@@ -57,7 +57,7 @@ namespace GADES2
         }
         public string DisplayWeapon(int Cost)
         {
-            return "Buy " + Weapon[0].weaponType + Cost.ToString();
+            return "Buy " + Cost.ToString();
         }
     }
 }

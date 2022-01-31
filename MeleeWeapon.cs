@@ -14,12 +14,14 @@ namespace GADES2
             this.MeleeWeaponType = MeleeWeaponType;
             if (MeleeWeaponType == Types.DAGGER)
             {
+                this.weaponType = "Dagger";
                 this.damage = 3;
                 this.durability = 10;
                 this.cost = 3;
             }
             else
-            { 
+            {
+                this.weaponType = "Longsword";
                 this.damage = 4;
                 this.durability = 6;
                 this.cost = 5;

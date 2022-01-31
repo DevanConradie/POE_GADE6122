@@ -14,6 +14,7 @@ namespace GADES2
             this.RangedWeaponType = RangedWeaponType;
             if (RangedWeaponType == Types.RIFLE)
             {
+                this.weaponType = "Rifle";
                 this.damage = 5;
                 this.durability = 3;
                 this.cost = 7;
@@ -21,6 +22,7 @@ namespace GADES2
             }
             else
             {
+                this.weaponType = "Longbow";
                 this.damage = 4;
                 this.durability = 4;
                 this.cost = 6;

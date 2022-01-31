@@ -34,6 +34,8 @@ namespace GADES2
             get { return items; }
         }
 
+        public Enemy Enemy { get; private set; }
+
         public Map(int minWidth, int maxWidth, int minHeight , int maxHeight, int numEnemies, int numItems)
         {
             random = new Random();
@@ -227,7 +229,7 @@ namespace GADES2
             {
                 newTile = new Leader(x, y);
                 Leader boss = (Leader)newTile;
-                boss.LeaderTarget = hero ;
+                boss.LeaderTarget = player;
                 newTile = boss;
             }
             else if (tileType == Tile.TILETYPE.hero)
@@ -244,16 +246,16 @@ namespace GADES2
                 switch (typeWeapon)
                 {
                     case 1:
-                        newTile = new MeleeWeapon(Types.longsword, x, y);
+                        newTile = new MeleeWeapon(4, 6, 5, "Longsword", 'L', x, y, MeleeWeapon.Types.LONGSWORD) ;
                         break;
                     case 2:
-                        newTile = new MeleeWeapon(Types.dagger, x, y);
+                        newTile = new MeleeWeapon(3, 10, 3, "Dagger", 'D', x, y, MeleeWeapon.Types.DAGGER);
                         break;
                     case 3:
-                        newTile = new RangedWeapon(RangedTypes.LONGBOW, x, y);
+                        newTile = new RangedWeapon(4, 2, 4, 6, "Longbow", 'B', x, y, RangedWeapon.Types.LONGBOW);
                         break;
                     case 4:
-                        newTile = new RangedWeapon(RangedTypes.RIFLE, x, y);
+                        newTile = new RangedWeapon(5, 3, 3, 7, "Rifle", 'R', x, y, RangedWeapon.Types.RIFLE);
                         break;
                 }
             }
@@ -334,8 +336,8 @@ namespace GADES2
 
                     if (map[x,y] is Goblin)
                     {
-                        enemy = (Enemy)map[x, y];
-                        if (enemy.IsDead(enemy)==true)
+                        Enemy = (Enemy)map[x, y];
+                        if (Enemy.IsDead())
                         {
                             value += 'x';
                         }
@@ -347,8 +349,8 @@ namespace GADES2
                     }
                     else if (map[x,y] is Mage)
                     {
-                        enemy = (Enemy)map[x, y];
-                        if (enemy.IsDead(enemy) == true)
+                        Enemy = (Enemy)map[x, y];
+                        if (Enemy.IsDead())
                         {
                             value += 'x';
                         }
@@ -359,8 +361,8 @@ namespace GADES2
                     }
                     else if (map[x, y] is Leader)
                     {
-                        enemy = (Enemy)map[x, y];
-                        if (enemy.IsDead(enemy) == true)
+                        Enemy = (Enemy)map[x, y];
+                        if (Enemy.IsDead())
                         {
                             value += 'x';
                         }
